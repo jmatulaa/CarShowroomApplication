@@ -2,40 +2,52 @@ import java.util.*;
 
 public class CarShowroom {
     private String salon;
-    private int max=10;
+    private int max;
     private List<Vehicle> vehicleList = new ArrayList<>();
-    //private Map<Vehicle, Integer> vehicleMap = new HashMap<Vehicle, Integer>();
+    private Map<Vehicle, Integer> vehicleMap = new HashMap<>();
 
-    private int count = 0;
-
-    public CarShowroom(){};
     public CarShowroom(String salon, int max) {
         this.salon = salon;
         this.max = max;
     }
-    public void addVehicle(Vehicle vehicle)
+
+    public void addVehicle(Vehicle vehicle, CarShowroom carShowroom)
     {
-        vehicleList.add(vehicle);
-
+        if(vehicleList.size()<carShowroom.getMax()) {
+            if (equals(vehicle)) {
+                vehicleList.add(vehicle);
+            } else {
+                vehicleList.add(vehicle);
+                vehicleMap.put(vehicle, 1);
+            }
+        } else System.err.println("Sorry, we don't have enough space");
     }
-
-
-    public int getMax(){return max;}
-
-   public int getCount(Vehicle vehicle)
-    {
-       return  1;
-    }
-
-    //DONE
-    public void print()
+    public boolean equals(Vehicle v)
     {
         for(Vehicle vehicle: vehicleList)
         {
-            vehicle.printVehicle(vehicle);
+            if(v.getModel().equals(vehicle.getModel())&& v.getMark().equals(vehicle.getMark()))
+            {
+                vehicleMap.put(vehicle, vehicleMap.get(vehicle)+1);
+                return true;
+            }
         }
+        return false;
     }
 
+    public int getMax(){return max;}
+
+    //DONE
+    public void summary()
+    {
+        for(Vehicle vehicle: vehicleList) {
+            for (Map.Entry<Vehicle, Integer> e : vehicleMap.entrySet()) {
+                if(vehicle.getMark()==e.getKey().getMark()&& vehicle.getModel()==e.getKey().getModel()) {
+                    vehicle.setCount(e.getValue());
+                }
+            }
+        }
+    }
 
     public void removeVehicle(Vehicle vehicle)
     {
@@ -71,7 +83,7 @@ public class CarShowroom {
             }
         }
 
-        if(true1==false) System.out.println("We haven't got this vehicle");
+        if(!true1) System.out.println("We haven't got this vehicle");
     }
 
     //DONE
@@ -82,7 +94,6 @@ public class CarShowroom {
         {
             if(vehicle.getCondition()==itemCondition)
             {
-                //vehicle.printVehicle(vehicle);
                 count++;
             }
         }
@@ -92,21 +103,22 @@ public class CarShowroom {
     //DONE
     public void sortByName(){
 
+
+        Collections.sort(vehicleList, (v1,v2)->{
+            return v1.getMark().compareTo(v2.getMark());
+        });
+
+          /*another way:
          Collections.sort(vehicleList, new Comparator<Vehicle>() {
              @Override
              public int compare(Vehicle v1, Vehicle v2) {
                  return v1.getMark().compareTo(v2.getMark());
              }
          });
+*/
 
-        /*
-        another way:
-        Collections.sort(vehicleList, (v1,v2)->{
-            return v1.getMark().compareTo(v2.getMark());
-        });
-         */
 
-         for(Vehicle vehicle: vehicleList)
+        for(Vehicle vehicle: vehicleList)
          {
              vehicle.printVehicle(vehicle);
          }
@@ -128,8 +140,6 @@ public class CarShowroom {
             vehicle.printVehicle(vehicle);
         }
     }
-    
-
 
 
 }

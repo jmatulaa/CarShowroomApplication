@@ -5,11 +5,16 @@ public class Vehicle implements Comparable<Vehicle> {
     private double prize;
     private int year;
     private double mileage;
-    private double capacity; //pojemność
-    private int count=0;
+    private double capacity;
+    private int count;
+    
 
+    public void setCount(int count){
+      this.count=count;
+    }
 
-    public Vehicle(){};
+    public int getCount(){return this.count;}
+
     public String getMark() {
         return mark;
     }
@@ -42,8 +47,6 @@ public class Vehicle implements Comparable<Vehicle> {
         this.prize = prize;
     }
 
-
-
     public Vehicle(String mark, String model, ItemCondition condition, double prize, int year, double mileage, double capacity)
     {
         this.model=model;
@@ -57,7 +60,6 @@ public class Vehicle implements Comparable<Vehicle> {
 
     public void printVehicle(Vehicle vehicle)
     {
-       // CarShowroom carShowroom= new CarShowroom();
         System.out.println("Marka: "+mark);
         System.out.println("Model: "+model);
         System.out.println("Stan: "+condition);
@@ -65,18 +67,26 @@ public class Vehicle implements Comparable<Vehicle> {
         System.out.println("Rok produkcji: "+year);
         System.out.println("Przebieg: "+mileage);
         System.out.println("Pojemność: "+capacity);
-       // System.out.println("Stan w magazynie: "+carShowroom.getCount(vehicle));
+        System.out.println("Ilość na magazynie: "+vehicle.getCount());
+
         System.out.println();
     }
+
     public Vehicle(String model)
     {
         this.model=model;
+    }
+
+    public Vehicle(String model, String mark, int count)
+    {
+        this.mark=mark;
+        this.model=model;
+        this.count=count;
     }
 
     @Override
     public int comprateTo(Vehicle o1, Vehicle o2) {
         return 0;
     }
-
 
 }
