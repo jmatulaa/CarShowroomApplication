@@ -7,7 +7,7 @@ public class Vehicle implements Comparable<Vehicle> {
     private double mileage;
     private double capacity;
     private int count;
-    
+
 
     public void setCount(int count){
       this.count=count;
@@ -62,11 +62,11 @@ public class Vehicle implements Comparable<Vehicle> {
     {
         System.out.println("Marka: "+mark);
         System.out.println("Model: "+model);
-        System.out.println("Stan: "+condition);
-        System.out.println("Cena: "+prize);
-        System.out.println("Rok produkcji: "+year);
-        System.out.println("Przebieg: "+mileage);
-        System.out.println("Pojemność: "+capacity);
+//        System.out.println("Stan: "+condition);
+//        System.out.println("Cena: "+prize);
+//        System.out.println("Rok produkcji: "+year);
+//        System.out.println("Przebieg: "+mileage);
+//        System.out.println("Pojemność: "+capacity);
         System.out.println("Ilość na magazynie: "+vehicle.getCount());
 
         System.out.println();
