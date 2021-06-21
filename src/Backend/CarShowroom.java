@@ -1,13 +1,27 @@
+package Backend;
+
 import java.util.*;
 
 public class CarShowroom {
-    private String salon;
+
+    private String nameOfSalon;
     private int max;
+
+    public List<Vehicle> getVehicleList() {
+        return vehicleList;
+    }
+
     private List<Vehicle> vehicleList = new ArrayList<>();
     private Map<Vehicle, Integer> vehicleMap = new HashMap<>();
 
+    public String getNameOfSalon() {
+        return nameOfSalon;
+    }
+
+    public CarShowroom(){};
+
     public CarShowroom(String salon, int max) {
-        this.salon = salon;
+        this.nameOfSalon = salon;
         this.max = max;
     }
 
@@ -38,7 +52,7 @@ public class CarShowroom {
     }
 
     //DONE
-    public void removeVehicle(Vehicle vehicle, CarShowroom carShowroom)
+    public void removeVehicle(Vehicle vehicle)
     {
         summary();
         if(vehicle.getCount()==0) {
@@ -46,7 +60,6 @@ public class CarShowroom {
             vehicleMap.remove(vehicle);
         }
         else{
-        System.out.println("wchodze2");
             vehicleList.remove(vehicle);
             vehicleMap.put(vehicle, vehicle.getCount()-1);
         }

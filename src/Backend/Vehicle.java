@@ -1,3 +1,5 @@
+package Backend;
+
 public class Vehicle implements Comparable<Vehicle> {
     private String mark;
     private String model;
@@ -8,6 +10,13 @@ public class Vehicle implements Comparable<Vehicle> {
     private double capacity;
     private int count;
 
+    public int getYear() {
+        return year;
+    }
+
+    public double getMileage() {
+        return mileage;
+    }
 
     public void setCount(int count){
       this.count=count;
@@ -45,6 +54,15 @@ public class Vehicle implements Comparable<Vehicle> {
 
     public void setPrize(double prize) {
         this.prize = prize;
+    }
+
+    public Vehicle(String mark, String model, double prize, int year, double mileage)
+    {
+        this.model=model;
+        this.mark = mark;
+        this.prize=prize;
+        this.year=year;
+        this.mileage=mileage;
     }
 
     public Vehicle(String mark, String model, ItemCondition condition, double prize, int year, double mileage, double capacity)
